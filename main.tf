@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "${var.project_name}-${var.environment}-${var.region}-terraform-state"
+  bucket = "${var.infrastructure}-${var.environment}-${var.region}-terraform-state"
   acl    = var.acl
 
   versioning {
@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "s3_bucket" {
 }
 
 resource "aws_dynamodb_table" "dynamodb_table" {
-  name           = "${var.project_name}-${var.environment}-${var.region}-terraform-state"
+  name           = "${var.infrastructure}-${var.environment}-${var.region}-terraform-state"
   hash_key       = var.key_name
   read_capacity  = var.read_capacity
   write_capacity = var.write_capacity
